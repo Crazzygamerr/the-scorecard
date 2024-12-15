@@ -75,7 +75,7 @@ const Goal = ({ name, choices, onAddNewChoice, onDelete }) => {
 					<p>{name}</p>
 				</button>
 				{/* &#40;{choices.reduce((acc, obj) => acc + obj.type, 0)}&#47;{choices.length}&#41; */}
-				<div className="flex gap-4 items-center mr-1">
+				<div className="flex gap-4 items-center mr-1 py-2">
 					<button
 					className="text-white bg-red-600 rounded-lg px-4 py-1"
 						onClick={() => {
@@ -98,7 +98,7 @@ const Goal = ({ name, choices, onAddNewChoice, onDelete }) => {
 				</div>
 			</div>
 			<input ref={newChoiceInputRef} hidden={!isNewChoiceInputVisible} type="text" placeholder="Add new choice"
-				className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-full border-b border-gray-300"
+				className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-full border-b border-gray-300 px-2"
 				onKeyDown={(e) => {
 					console.log(e);
 					if (e.key === 'Enter') {
@@ -108,16 +108,25 @@ const Goal = ({ name, choices, onAddNewChoice, onDelete }) => {
 					}
 					}}
 				/>
-			<ol className="divide-y divide-gray-200" hidden={!isChoicesVisible}>
+			<ol className="divide-y divide-gray-200 px-2" hidden={!isChoicesVisible}>
 				{choices.length === 0 && (
-					<li className="py-2 text-gray-500">No choices yet</li>
+					<li className="p-2 text-gray-500">No choices made yet!</li>
 				)}
 				{choices.toReversed().map((choice, choiceIndex) => (
-					<li className={"py-2 " + (choice.type === 0 ? 'text-red-600' : 'text-green-600')}
+					<li className="py-2"
 						key={choiceIndex}>
-						<div className="flex items-center justify-between">
-							<p className="text-sm font-medium">{choice.desc}</p>
-							<p>{choice.type === 0 ? "-" : "+"}</p>
+						<div className="flex items-center justify-between pl-3">
+							<div className="flex items-center gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="0.8rem" height="1rem" viewBox="0 0 48 48">
+									<path
+										// fill="currentColor" stroke="currentColor"
+										fill={choice.type === 0 ? 'red' : 'green'}
+										stroke={choice.type === 0 ? 'red' : 'green'}
+										strokeWidth="4" d="M24 33a9 9 0 1 0 0-18a9 9 0 0 0 0 18Z" />
+								</svg>
+								<p className={"text-md font-medium " + (choice.type === 0 ? 'text-red-600' : 'text-green-600')}>{choice.desc}</p>
+							</div>
+							<p className="text-xs font-light text-slate-500">{new Date(choice.timestamp).toDateString()}</p>
 						</div>
 					</li>
 				))}
@@ -168,7 +177,7 @@ export default function Home() {
 							onChange={(e) => setUserInput(e.target.value)}
 							type="text" placeholder="Add a goal"
 							onKeyDown={(e) => {
-								if (e.key === 'Enter') {
+								if (e.key === 'Enter' && userInput.length > 0) {
 									addGoal(userInput);
 									setUserInput('');
 									e.target.value = '';
@@ -178,7 +187,12 @@ export default function Home() {
 									</input>
 							<button
 					className="flex-shrink-0 bg-black hover:bg-black border-black hover:border-black text-sm border-4 text-white py-1 px-2 rounded"
-					onClick={() => addGoal(userInput)}
+							onClick={() => {
+								if (userInput.length > 0) {
+									addGoal(userInput);
+									setUserInput('');
+								}
+							}}
 									type="button">
 									Add
 						</button>
