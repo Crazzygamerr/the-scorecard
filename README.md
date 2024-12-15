@@ -1,3 +1,8 @@
+
+# The Scorecard
+
+The Scorecard is a simple yet powerful tool to help you achieve your goals. Inspired by the principles in the book "The Compound Effect" by Darren Hardy, this app provides a structured way to track your daily progress and reinforce the habits that drive your results.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
