@@ -67,9 +67,9 @@ const Goal = ({ name, choices, onAddNewChoice, onDelete }) => {
   };
 
   return (
-    <div className="flex flex-col gap-2 border border-black/500 shadow-lg rounded-lg p-2 ">
+    <div className="flex flex-col border border-black/500 shadow-lg rounded-lg">
 			<div className="flex items-center justify-between">
-				<button className="w-full flex text-lg font-medium items-center gap-2"
+				<button className="w-full flex text-lg font-medium items-center gap-2 p-2"
 					onClick={() => setIsChoicesVisible(!isChoicesVisible)}>
 					{isChoicesVisible ? <IconDown /> : <IconRight />}
 					<p>{name}</p>
