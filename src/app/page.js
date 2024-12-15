@@ -167,8 +167,11 @@ export default function Home() {
 	
   return (
     <div className="grid grid-rows-[20px_1fr_20px] min-h-screen b-20 gap-4 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center">
-				<h1 className="text-gray-800 font-bold text-3xl">The Scorecard</h1>
+			<main className="flex flex-col gap-8 row-start-2 items-center">
+				<div className="flex flex-col items-center gap-2">
+					<h1 className="text-gray-800 font-bold text-3xl">The Scorecard</h1>
+					<h3 className="text-gray-600 font-light text-lg">A Simple Tool to Achieve Your Goals</h3>
+				</div>
 				<div className="max-w-md mx-auto overflow-hidden">
 					<div className="w-full max-w-sm mx-auto flex items-center border border-black/500 shadow-lg rounded-lg px-2 py-2">
 						<input

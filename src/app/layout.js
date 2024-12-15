@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-	title: "The Scoorecard",
+	title: "The Scorecard",
 	description: "As seen in the Compound Effect by Darren Hardy",
 };
 
